@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="you_are_the_best_person">You are the best person</string>
+    <string name="from">From : Olivia</string>
+    <string name="to">To : Vincent</string>
 </resources>

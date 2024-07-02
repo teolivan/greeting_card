@@ -17,7 +17,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,7 +34,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 BirthdayImage(
-                    message = "You are the best person", "Olivia", "Vincent", modifier = Modifier
+                    message = stringResource(R.string.you_are_the_best_person),
+                    from = stringResource(R.string.from),
+                    to = stringResource(R.string.to),
+                    modifier = Modifier
                         .fillMaxSize()
                         .padding(8.dp))
                 }
@@ -74,7 +79,10 @@ fun BirthdayCardPreview() {
     MyApplicationTheme {
       //  GreetingText(message = "You are the best person", "Olivia", "Vincent")
         BirthdayImage(
-            message = "You are the best person", "Olivia", "Vincent", modifier = Modifier
+            message = stringResource(R.string.you_are_the_best_person),
+            from = stringResource(R.string.from),
+            to = stringResource(R.string.to),
+            modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp))
     }
@@ -86,7 +94,9 @@ fun BirthdayImage(message : String, from : String, to : String, modifier : Modif
     Box (modifier) {
         Image (
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F
         )
         GreetingText(message = "You are the best person", "Olivia", "Vincent", modifier = Modifier
             .fillMaxSize()
