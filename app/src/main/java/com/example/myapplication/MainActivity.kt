@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,7 +31,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
-                GreetingText(message = "You are the best person", "Olivia", "Vincent")
+                BirthdayImage(
+                    message = "You are the best person", "Olivia", "Vincent", modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp))
                 }
             }
         }
@@ -67,13 +72,26 @@ Column(modifier = modifier.padding(8.dp),
 @Composable
 fun BirthdayCardPreview() {
     MyApplicationTheme {
-        GreetingText(message = "You are the best person", "Olivia", "Vincent")
+      //  GreetingText(message = "You are the best person", "Olivia", "Vincent")
+        BirthdayImage(
+            message = "You are the best person", "Olivia", "Vincent", modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp))
     }
 }
 
 @Composable
-fun BirthdayImage(message : String, from : String, modifier: Modifier = Modifier) {
+fun BirthdayImage(message : String, from : String, to : String, modifier : Modifier = Modifier) {
     val image = painterResource(R.drawable.androidparty)
+    Box (modifier) {
+        Image (
+            painter = image,
+            contentDescription = null
+        )
+        GreetingText(message = "You are the best person", "Olivia", "Vincent", modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp))
+    }
 }
 
 
